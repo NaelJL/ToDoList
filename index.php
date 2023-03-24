@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Gochi+Hand&display=swap');
 
         body {
-            background: url('ressources/kelly-sikkema-Oz_J_FXKvIs-unsplash_medium.jpg');
+            background: url('ressources/kseniya-lapteva-qgWQuzpazWw-unsplash.jpg');
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-size: cover;
@@ -20,18 +20,20 @@
             font-family: 'Dosis', sans-serif;
             font-size: 20px;
             color: rgb(8, 21, 31);
-            background-color: rgba(221, 222, 226, 0);
             border: none;
-            width: 900px;
-            height: 510px;
             overflow: scroll;
-            margin: 230px auto auto 150px;
+            background-color: rgba(221, 222, 226, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 100px auto;
+            width: 80%;
         }
 
         h1 {
             text-shadow: 3px 3px 1px #303039;
             font-family: 'Gochi Hand', sans-serif;
             font-size: 50px;
+            text-align: center;
         }
 
         h3 {
@@ -103,20 +105,6 @@
         .logo-close:hover {
             cursor: pointer;
         }
-
-        @media only screen and (max-width: 1120px) {
-            body {
-                background: url('ressources/kseniya-lapteva-qgWQuzpazWw-unsplash.jpg');
-            }
-
-            main {
-                background-color: rgba(221, 222, 226, 0.8);
-                padding: 20px;
-                border-radius: 5px;
-                margin: 100px auto;
-                width: 80%;
-            }
-        }
     </style>
     <title>To Do List</title>
 </head>
@@ -141,11 +129,12 @@
                 $query->execute([
                     'task' => $task_ok
                 ]);
-                echo "<p style='color: darkcyan '>La tâche a été ajoutée avec succès.</p>";
-            } else {
-                echo "<p>Vous devez écrire une nouvelle tâche pour pouvoir l'ajouter.</p>";
             }
         }
+
+        // afficher les tâches
+        $all = $pdo->query('SELECT * FROM todo');
+        $tasks = $all->fetchAll();
 
         // supprimer la tâche
         if (isset($_POST['id'])) {
@@ -156,13 +145,8 @@
                 $query->execute([
                     'id' => $id
                 ]);
-                echo "<p style='color: hotpink'>La tâche a été supprimée avec succès.</p>";
             }
         }
-
-        // afficher les tâches
-        $all = $pdo->query('SELECT * FROM todo');
-        $tasks = $all->fetchAll();
     } catch (PDOException $e) {
         $error = $e->getMessage();
     }
@@ -170,8 +154,6 @@
 
     <main>
         <header>
-            <h1>To Do list</h1>
-
             <form action="" method="POST" class="add-task">
                 <input type="text" id="add" name="add" value="" placeholder="Ajouter une nouvelle tâche" />
                 <input type="submit" value="Sauvegarder" />
