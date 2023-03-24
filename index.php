@@ -132,10 +132,6 @@
             }
         }
 
-        // afficher les tâches
-        $all = $pdo->query('SELECT * FROM todo');
-        $tasks = $all->fetchAll();
-
         // supprimer la tâche
         if (isset($_POST['id'])) {
             if (!empty($_POST['id'])) {
@@ -147,6 +143,10 @@
                 ]);
             }
         }
+
+        // afficher les tâches
+        $all = $pdo->query('SELECT * FROM todo');
+        $tasks = $all->fetchAll();
     } catch (PDOException $e) {
         $error = $e->getMessage();
     }
