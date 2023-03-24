@@ -16,6 +16,11 @@
             min-height: 100%;
         }
 
+        strong {
+            font-family: 'Gochi Hand', sans-serif;
+            font-size: 25px;
+        }
+
         main {
             font-family: 'Dosis', sans-serif;
             font-size: 20px;
@@ -27,13 +32,6 @@
             border-radius: 5px;
             margin: 100px auto;
             width: 80%;
-        }
-
-        h1 {
-            text-shadow: 3px 3px 1px #303039;
-            font-family: 'Gochi Hand', sans-serif;
-            font-size: 50px;
-            text-align: center;
         }
 
         h3 {
@@ -154,6 +152,22 @@
 
     <main>
         <header>
+            <p>
+                Nous sommes le
+                <?php
+                $date_actual = time();
+                $format_date = 'd/m/Y';
+                $date = date($format_date, $date_actual);
+                echo $date;
+                ?>
+                , il est
+                <?php
+                $format_date = 'H:i';
+                $hour = date($format_date, $date_actual);
+                echo $hour;
+                ?>
+                . <strong>Qu'allez vous faire maintenant ?</strong>
+            </p>
             <form action="" method="POST" class="add-task">
                 <input type="text" id="add" name="add" value="" placeholder="Ajouter une nouvelle tâche" />
                 <input type="submit" value="Sauvegarder" />
