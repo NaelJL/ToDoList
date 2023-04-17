@@ -27,11 +27,12 @@
             color: rgb(8, 21, 31);
             border: none;
             overflow: scroll;
+            height: 500px;
             background-color: rgba(221, 222, 226, 0.8);
-            padding: 20px;
+            padding: 40px;
             border-radius: 5px;
             margin: 100px auto;
-            width: 80%;
+            width: 60%;
         }
 
         h3 {
@@ -54,7 +55,7 @@
             border-radius: 5px;
             border: 0.5px solid rgb(60, 59, 59);
             padding: 7px;
-            width: 350px;
+            width: clamp(200px, 35vw, 350px);
             background-color: transparent;
             color: rgb(36, 36, 36);
         }
@@ -166,7 +167,6 @@
                 $hour = date($format_date, $date_actual);
                 echo $hour;
                 ?>
-                . <strong>Qu'allez vous faire maintenant ?</strong>
             </p>
             <form action="" method="POST" class="add-task">
                 <input type="text" id="add" name="add" value="" placeholder="Ajouter une nouvelle tâche" />
