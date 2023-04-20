@@ -156,6 +156,7 @@
             <p>
                 Nous sommes le
                 <?php
+                date_default_timezone_set('Europe/Paris');
                 $date_actual = time();
                 $format_date = 'd/m/Y';
                 $date = date($format_date, $date_actual);
